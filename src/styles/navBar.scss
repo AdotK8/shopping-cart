@@ -1,0 +1,8 @@
+@import "./fonts.scss";
+
+.nav-bar {
+  @extend .ubuntu-bold;
+
+  > .nav-item {
+  }
+}
