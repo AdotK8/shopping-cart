@@ -1,25 +1,27 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import "./styles/navBar.scss";
 import cartIcon from "./assets/cart.svg";
 
 export default function NavBar() {
   return (
     <nav className="nav-bar">
-      <h1 className="logo">fruits.</h1>
+      <h1 className="logo">Store.</h1>
       <ul className="nav-links">
         <li>
-          <a href="#" className="nav-item">
+          <Link to="/" className="nav-item">
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="nav-item">
+          <Link to="/store" className="nav-item">
             Store
-          </a>
+          </Link>
         </li>
       </ul>
-      <a href="#" className="nav-item cart-icon">
+      <Link to="/cart" className="nav-item cart-icon">
         <img src={cartIcon} alt="Cart" />
-      </a>
+      </Link>
     </nav>
   );
 }
