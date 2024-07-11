@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/navBar.scss";
 import cartIcon from "./assets/cart.svg";
-import { useEffect } from "react";
 
 export default function NavBar() {
   return (
