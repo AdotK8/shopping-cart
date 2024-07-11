@@ -1,0 +1,50 @@
+.store-page {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .shop-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .shop-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .shop-card-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .shop-card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .shop-card-description {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+
+    .shop-card-price {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+  }
+}

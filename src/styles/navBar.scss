@@ -1,5 +1,4 @@
 @import "./fonts.scss";
-
 .nav-bar {
   @extend .ubuntu-bold;
   display: flex;
@@ -32,13 +31,25 @@
     }
   }
 
-  .cart-icon {
+  .cart-container {
     display: flex;
     align-items: center;
 
-    img {
-      width: 34px;
-      height: 34px;
+    .cart-icon {
+      display: flex;
+      align-items: center;
+      margin-right: 0.5rem;
+
+      img {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    .cart-count {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
     }
   }
 }
