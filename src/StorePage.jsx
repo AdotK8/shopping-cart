@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/StorePage.scss";
 
 export default function StorePage({ inventory, cart, setInventory, setCart }) {
-  const addToCart = (id, quantity) => {
+  const addToCart = (id, quantity, title, price) => {
     setCart((prevCart) => {
       const updatedCart = { ...prevCart };
       if (updatedCart.hasOwnProperty(id)) {
@@ -65,7 +65,11 @@ export default function StorePage({ inventory, cart, setInventory, setCart }) {
                 <span className="quantity">{item.addQuantity}</span>
                 <button onClick={() => increaseQuantity(item.id)}>+</button>
               </div>
-              <button onClick={() => addToCart(item.id, item.addQuantity)}>
+              <button
+                onClick={() =>
+                  addToCart(item.id, item.addQuantity, item.title, item.price)
+                }
+              >
                 Add to cart
               </button>
             </div>

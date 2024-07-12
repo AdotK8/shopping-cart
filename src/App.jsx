@@ -54,7 +54,12 @@ export default function App() {
             />
           }
         />
-        <Route path="/cart" element={<CartPage inventory={inventory} />} />
+        <Route
+          path="/cart"
+          element={
+            <CartPage inventory={inventory} cart={cart} setCart={setCart} />
+          }
+        />
       </Routes>
     </Router>
   );
