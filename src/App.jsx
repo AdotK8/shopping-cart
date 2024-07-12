@@ -10,8 +10,12 @@ export default function App() {
   const [inventory, setInventory] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [cartNumber, setCartNumber] = useState();
-  const [cart, setCart] = useState(null);
+  const [cartNumber, setCartNumber] = useState(0);
+  const [cart, setCart] = useState({});
+
+  useEffect(() => {
+    setCartNumber(Object.values(cart).reduce((a, b) => a + b, 0));
+  }, [cart]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products?limit=5", { mode: "cors" })
@@ -41,7 +45,14 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route
           path="/store"
-          element={<StorePage inventory={inventory} cart={cart} />}
+          element={
+            <StorePage
+              inventory={inventory}
+              cart={cart}
+              setInventory={setInventory}
+              setCart={setCart}
+            />
+          }
         />
         <Route path="/cart" element={<CartPage inventory={inventory} />} />
       </Routes>

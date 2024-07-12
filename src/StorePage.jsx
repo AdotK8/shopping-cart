@@ -2,8 +2,22 @@ import React from "react";
 import "./styles/StorePage.scss";
 
 export default function StorePage({ inventory, cart, setInventory, setCart }) {
-  const addToCart = (item) => {
-    console.log(item);
+  const addToCart = (id, quantity) => {
+    setCart((prevCart) => {
+      const updatedCart = { ...prevCart };
+      if (updatedCart.hasOwnProperty(id)) {
+        updatedCart[id] += quantity;
+      } else {
+        updatedCart[id] = quantity;
+      }
+      return updatedCart;
+    });
+
+    setInventory((prevInventory) => {
+      return prevInventory.map((item) =>
+        item.id === id ? { ...item, addQuantity: 0 } : item
+      );
+    });
   };
 
   const clickHandlerTwo = () => {
@@ -14,7 +28,21 @@ export default function StorePage({ inventory, cart, setInventory, setCart }) {
     console.log(cart);
   };
 
-  const decreaseQuantity = () => {};
+  const increaseQuantity = (id) => {
+    const updatedInventory = inventory.map((item) =>
+      item.id === id ? { ...item, addQuantity: item.addQuantity + 1 } : item
+    );
+    setInventory(updatedInventory);
+  };
+
+  const decreaseQuantity = (id) => {
+    const updatedInventory = inventory.map((item) =>
+      item.id === id
+        ? { ...item, addQuantity: Math.max(item.addQuantity - 1, 0) }
+        : item
+    );
+    setInventory(updatedInventory);
+  };
 
   return (
     <div className="store-page">
@@ -33,15 +61,11 @@ export default function StorePage({ inventory, cart, setInventory, setCart }) {
               <p className="shop-card-description">{item.description}</p>
               <p className="shop-card-price">${item.price}</p>
               <div className="quantity-controls">
-                <button onClick={() => decreaseQuantity(item.addQuantity)}>
-                  -
-                </button>
+                <button onClick={() => decreaseQuantity(item.id)}>-</button>
                 <span className="quantity">{item.addQuantity}</span>
-                <button onClick={() => increaseQuantity(item.addQuantity)}>
-                  +
-                </button>
+                <button onClick={() => increaseQuantity(item.id)}>+</button>
               </div>
-              <button onClick={() => clickHandler(item.title)}>
+              <button onClick={() => addToCart(item.id, item.addQuantity)}>
                 Add to cart
               </button>
             </div>
