@@ -20,14 +20,6 @@ export default function StorePage({ inventory, cart, setInventory, setCart }) {
     });
   };
 
-  const clickHandlerTwo = () => {
-    console.log(inventory);
-  };
-
-  const clickHandlerThree = () => {
-    console.log(cart);
-  };
-
   const increaseQuantity = (id) => {
     const updatedInventory = inventory.map((item) =>
       item.id === id ? { ...item, addQuantity: item.addQuantity + 1 } : item
@@ -46,8 +38,6 @@ export default function StorePage({ inventory, cart, setInventory, setCart }) {
 
   return (
     <div className="store-page">
-      <button onClick={clickHandlerTwo}>display inventory</button>
-      <button onClick={clickHandlerThree}>display cart</button>
       <div className="shop-cards-container">
         {inventory &&
           inventory.map((item) => (
